@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="h1_title">
+        <h1>Hi, {{msg}}你好！</br>這是專屬您的會員頁</h1>      <!-- {msg}自己會隨著網址?message="後面自己寫的文字"做變化 -->
+    </div>
+        <div class="success">
+            <p>恭喜您，登入系統成功。</p>
+        </div>
+    <div>
+        <form method="get" action="/signout">
+            <button type="submit" class="btn">登出系統</button>
+        </form>
+    </div>
+    <div class="query">
+        <h1>查詢會員姓名</h1>
+        <input style="margin-left: 37%;" id="query" type="text" name="username"  /><button
+            onclick="getData();" class="btn2">查詢</button>
+    </div>
+    <script>
+
+        function getData() {
+            let username = document.getElementById('query').value;
+            let req = new XMLHttpRequest();
+            req.open("get", "http://127.0.0.1:3000/api/users?username=" + username)
+            req.onload = function () {
+                let userdata = JSON.parse(req.responseText);
+                let userTitle = document.createElement('div');
+                userTitle.classList.add('queryRes');
+                //加入：使用者姓名(帳號)
+                let textNode = document.createTextNode(userdata.data.name + " ( " + userdata.data.username + " ) ");
+                //div裡面放抓到的：使用者姓名(帳號)
+                userTitle.appendChild(textNode);
+                document.querySelector('.query').appendChild(userTitle)
+            }
+            req.send();
+        }
+
+    </script>
+{% endblock content %}

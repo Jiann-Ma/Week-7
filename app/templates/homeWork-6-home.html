@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="h1_title">
+        <h1>歡迎光臨！</br>請註冊登入系統</h1>
+    </div>
+    <div class="login">
+        <form method="post" action="/signup">
+            <input type="text" name="user" placeholder="姓名" required="required" />
+            <input type="text" name="username" placeholder="帳號名稱" required="required" />
+            <input type="password" name="password" placeholder="使用者密碼" required="required" />
+            <button type="submit" class="btn">立即註冊</button>
+        </form>
+    </div>
+    <div class="h1_title">
+        <h1>已是會員？</br>請輸入帳號與密碼</h1>
+    </div>
+    <div class="login">
+        <form method="post" action="/signin">
+            <input type="text" name="username" placeholder="帳號名稱" required="required" />
+            <input type="password" name="password" placeholder="使用者密碼" required="required" />
+            <button type="submit" class="btn">立即登入</button>
+        </form>
+    </div>
+    <script>
+        
+    </script>
+{% endblock content %}

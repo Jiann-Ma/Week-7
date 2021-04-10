@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="h1_title">
+        <h1>不好意思！<br>{{msg}}</br>好像發生了什麼錯誤？</h1>  <!-- 將後端渲染到前端，並選擇放置的位置 -->
+    </div>
+    <div class="failure">
+        <p>Oops! 請再檢查一次您的帳號密碼。</p>
+    </div>
+    <div>
+        <form method="get" action="/">
+            <button type="submit" class="btn">回到首頁</button>
+        </form>
+    </div>
+
+    <script></script>
+{% endblock content %}
